@@ -1,0 +1,23 @@
+clc;
+close all;
+time=out.tout;
+Ia=out.yout{1}.Values.iA.Data;
+n=9.55*out.yout{1}.Values.w.Data;
+Torque_out=out.yout{1}.Values.Te.Data;
+Torque_ref=out.yout{2}.Values.Data;
+n_ref=out.yout{3}.Values.Data;
+I_ref=out.yout{4}.Values.Data;
+xlabel('Time (s)');
+ylabel('Torque ($N\cdot m$)','Interpreter','latex');
+title('Output Torque vs Reference Torque');
+legend('Output Torque', 'Reference Torque');
+figure;
+plot(time, Ia,'b','LineWidth',1);
+hold on;
+plot(time, I_ref,'r','LineWidth',1);
+xlabel('Time (s)');
+ylabel('Amature Current (A)');
+title('Amature current');
+legend('Real current', 'Reference current');
+I_max=max(Ia);
+overshoot_I=(I_max-I_ref(5,1))/I_ref(5,1)
